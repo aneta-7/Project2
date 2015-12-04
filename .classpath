@@ -32,5 +32,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/hibernate-3.2.3.ga.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/spring-security-2.0.4.zip"/>
+	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/spring-2.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/spring-2.5.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/hibernate-core-3.6.10.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
