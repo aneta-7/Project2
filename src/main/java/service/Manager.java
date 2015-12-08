@@ -18,6 +18,6 @@ public interface Manager {
 	Bouqet findBouqetById(Long id);
 
 	List<Bouqet> getOwnedBouqets(User user);
-	void sellUser(Long userId, Long bouqetId);
+	void sellBouqet(Long userId, Long bouqetId);
 
 }

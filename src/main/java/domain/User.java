@@ -26,7 +26,7 @@ public class User {
 
 	private Long id;
 
-	private String firstName = "unknown";
+	private String name = "unknown";
 	private String nick = "";
 	private Date registrationDate = new Date();
 
@@ -42,12 +42,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(unique = true, nullable = false)

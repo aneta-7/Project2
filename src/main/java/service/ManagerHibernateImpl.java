@@ -88,7 +88,7 @@ public class ManagerHibernateImpl implements Manager{
 		return (Bouqet) sessionFactory.getCurrentSession().get(Bouqet.class, id);
 	}
 
-	public void sellUser(Long userId, Long bouqetId) {
+	public void sellBouqet(Long userId, Long bouqetId) {
 		User user = (User) sessionFactory.getCurrentSession().get(User.class, userId);
 		Bouqet bouqet = (Bouqet) sessionFactory.getCurrentSession().get(Bouqet.class, bouqetId);
 		bouqet.setSold(true);
