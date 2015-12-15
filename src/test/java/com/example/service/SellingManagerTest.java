@@ -38,13 +38,16 @@ public class SellingManagerTest{
 	
 	private final String TYPE_2 = "bukiet";
 	private final String COLOR_2 = "bialy";
+	
+	private final int ID = 1;
 
 	@Test
 	public void addClientCheck() {
 
 		List<User> retrievedUsers = manager.getAllUsers();
 
-		// If there is a client with PIN_1 delete it
+		//jesli znajdzie uzytkownika po nick'u to usuwa go
+		// If there is a client with NICK_1 delete it
 		for (User client : retrievedUsers) {
 			if (client.getNick().equals(NICK_1)) {
 				manager.deleteUser(client);
@@ -56,9 +59,10 @@ public class SellingManagerTest{
 		user.setNick(NICK_1);
 		// ... other properties here
 
-		// Pin is Unique
+		// Nick jest unikatowy
+		// dodanie nowego uzytkownika
 		manager.addUser(user);
-
+		//szukanie po nick'u
 		User retrievedUser = manager.findUserByNick(NICK_1);
 
 		assertEquals(NAME_1, retrievedUser.getName());
@@ -74,30 +78,29 @@ public class SellingManagerTest{
 		bouquet.setColor(COLOR_1);
 		// ... other properties here
 
-		Long bouquetId = manager.addNewBouquet(bouquet);
-
+		//dodawanie
+		Long bouquetId = manager.addNewBouquet(bouquet);	
+		//szukanie po id
 		Bouquet retrievedBouquet = manager.findBouquetById(bouquetId);
 		assertEquals(TYPE_1, retrievedBouquet.getType());
 		assertEquals(COLOR_1, retrievedBouquet.getColor());
-		// ... check other properties here
-
+		// ... check other properties here	
 	}
-
 	@Test
 	public void sellBouquetCheck() {
 
 		User user = new User();
 		user.setName(NAME_2);
 		user.setNick(NICK_2);
-
+		//dodanie uzytkownika
 		manager.addUser(user);
-
+		//szukanie po nick'u
 		User retrievedUser = manager.findUserByNick(NICK_2);
-
+		
 		Bouquet bouquet = new Bouquet();
 		bouquet.setType(TYPE_2);
 		bouquet.setColor(COLOR_2);
-
+		//dodanie nowego bukietu
 		Long bouquetId = manager.addNewBouquet(bouquet);
 
 		manager.sellBouquet(retrievedUser.getId(), bouquetId);
