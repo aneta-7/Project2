@@ -1,4 +1,4 @@
-package test;
+package com.example.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,15 +12,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import service.Manager;
+import com.example.service.Manager;
+
+import domain.Bouquet;
 import domain.User;
-import domain.Bouqet;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/beans.xml" })
 @TransactionConfiguration(transactionManager = "txManager", defaultRollback = true)
 @Transactional
-public class SellingManagerTest {
+public class SellingManagerTest{
 
 	@Autowired
 	Manager manager;
@@ -65,24 +67,24 @@ public class SellingManagerTest {
 	}
 
 	@Test
-	public void addBouqetCheck() {
+	public void addBouquetCheck() {
 
-		Bouqet bouqet = new Bouqet();
-		bouqet.setType(TYPE_1);
-		bouqet.setColor(COLOR_1);
+		Bouquet bouquet = new Bouquet();
+		bouquet.setType(TYPE_1);
+		bouquet.setColor(COLOR_1);
 		// ... other properties here
 
-		Long bouqetId = manager.addNewBouqet(bouqet);
+		Long bouquetId = manager.addNewBouquet(bouquet);
 
-		Bouqet retrievedBouqet = manager.findBouqetById(bouqetId);
-		assertEquals(TYPE_1, retrievedBouqet.getType());
-		assertEquals(COLOR_1, retrievedBouqet.getColor());
+		Bouquet retrievedBouquet = manager.findBouquetById(bouquetId);
+		assertEquals(TYPE_1, retrievedBouquet.getType());
+		assertEquals(COLOR_1, retrievedBouquet.getColor());
 		// ... check other properties here
 
 	}
 
 	@Test
-	public void sellBouqetCheck() {
+	public void sellBouquetCheck() {
 
 		User user = new User();
 		user.setName(NAME_2);
@@ -92,24 +94,18 @@ public class SellingManagerTest {
 
 		User retrievedUser = manager.findUserByNick(NICK_2);
 
-		Bouqet bouqet = new Bouqet();
-		bouqet.setType(TYPE_2);
-		bouqet.setColor(COLOR_2);
+		Bouquet bouquet = new Bouquet();
+		bouquet.setType(TYPE_2);
+		bouquet.setColor(COLOR_2);
 
-		Long bouqetId = manager.addNewBouqet(bouqet);
+		Long bouquetId = manager.addNewBouquet(bouquet);
 
-		manager.sellBouqet(retrievedUser.getId(), bouqetId);
+		manager.sellBouquet(retrievedUser.getId(), bouquetId);
 
-		List<Bouqet> ownedBouqets = manager.getOwnedBouqets(retrievedUser);
+		List<Bouquet> ownedBouquets = manager.getOwnedBouquets(retrievedUser);
 
-		assertEquals(1, ownedBouqets.size());
-		assertEquals(TYPE_2, ownedBouqets.get(0).getType());
-		assertEquals(COLOR_2, ownedBouqets.get(0).getColor());
+		assertEquals(1, ownedBouquets.size());
+		assertEquals(TYPE_2, ownedBouquets.get(0).getType());
+		assertEquals(COLOR_2, ownedBouquets.get(0).getColor());
 	}
-
-	// @Test -
-	public void disposeCarCheck() {
-		// Do it yourself
-	}
-
 }

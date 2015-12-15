@@ -30,7 +30,7 @@ public class User {
 	private String nick = "";
 	private Date registrationDate = new Date();
 
-	private List<Bouqet> bouqets = new ArrayList<Bouqet>();
+	private List<Bouquet> bouquets = new ArrayList<Bouquet>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -70,12 +70,12 @@ public class User {
 
 	// Be careful here, both with lazy and eager fetch type
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Bouqet> getBouqets() {
-		return bouqets;
+	public List<Bouquet> getBouquets() {
+		return bouquets;
 	}
 
-	public void setBouqets(List<Bouqet> bouqets) {
-		this.bouqets = bouqets;
+	public void setBouquets(List<Bouquet> bouqets) {
+		this.bouquets = bouqets;
 	}
 	
 }
