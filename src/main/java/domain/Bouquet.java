@@ -12,7 +12,9 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "bouqet.unsold", query = "Select b from Bouqet b where b.sold = false")
+		@NamedQuery(name = "bouquet.unsold", query = "Select b from Bouquet b where b.sold = false"),
+		@NamedQuery(name = "bouquet.color", query = "Select b from Bouquet b where b.color= :color"),
+		@NamedQuery(name = "bouquet.all", query = "Select b from Bouquet b"),
 })
 
 public class Bouquet {

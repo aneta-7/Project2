@@ -25,10 +25,8 @@ import javax.persistence.TemporalType;
 public class User {
 
 	private Long id;
-
-	private String name = "unknown";
-	private String nick = "";
-	private Date registrationDate = new Date();
+	private String name;
+	private String nick;
 
 	private List<Bouquet> bouquets = new ArrayList<Bouquet>();
 
@@ -59,21 +57,11 @@ public class User {
 		this.nick = nick;
 	}
 
-	@Temporal(TemporalType.DATE)
-	public Date getRegistrationDate() {
-		return registrationDate;
-	}
-
-	public void setRegistrationDate(Date registrationDate) {
-		this.registrationDate = registrationDate;
-	}
-
-	// Be careful here, both with lazy and eager fetch type
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public List<Bouquet> getBouquets() {
 		return bouquets;
 	}
-
+	
 	public void setBouquets(List<Bouquet> bouqets) {
 		this.bouquets = bouqets;
 	}
