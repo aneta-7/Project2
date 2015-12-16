@@ -2,8 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
-import domain.Bouquet;
-import domain.User;
+import com.example.domain.Bouquet;
+import com.example.domain.User;
 
 public interface Manager {
 
@@ -17,12 +17,12 @@ public interface Manager {
 	void addNewBouquet(Bouquet bouqet);
 	void updateBouquet(Bouquet bouqet);
 	void deleteBouquet(Bouquet bouqet);
+	List<Bouquet> getAllBouquets();
 	List<Bouquet> getAvailableBouquets();
 	void disposeBouquet(User user, Bouquet bouqet);
 	Bouquet findBouquetById(Bouquet bouquet);
 	List<Bouquet> findBouquetByColor(String color);
-
 	List<Bouquet> getOwnedBouquets(User user);
-	void sellBouquet(Long userId, Long bouquetId);
+
 
 }

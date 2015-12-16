@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Bouquet;
-import domain.User;
+import com.example.domain.Bouquet;
+import com.example.domain.User;
 
 @Component
 @Transactional
@@ -34,61 +34,62 @@ public class ManagerHibernateImpl implements Manager{
 	
 	
 	
-	
+	@Override
 	public void deleteUser(User user) {
 		sessionFactory.getCurrentSession().delete(user);	
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<User> getAllUsers() {
 		return sessionFactory.getCurrentSession().getNamedQuery("user.all").list();
 	}
-	
+	@Override
 	public void updateUser(User user) {
 		sessionFactory.getCurrentSession().merge(user);
 	}
-
+	@Override
 	public User findUserById(User user) {
 		return (User) sessionFactory.getCurrentSession().get(User.class, user.getId());
 	}
-	
+	@Override
 	public void addUser(User user) {
 		user.setId(null);
 		sessionFactory.getCurrentSession().persist(user);
 	}
+	@Override
 	public User findUserByNick(String nick) {
 		return (User) sessionFactory.getCurrentSession().getNamedQuery("user.byNick").setString("nick",nick).list();
 	}
 	
 	
-	
+	@Override
 	public void addNewBouquet(Bouquet bouquet) {
 		bouquet.setId(null);
 		sessionFactory.getCurrentSession().persist(bouquet);	
 	}
+	@Override
 	public Bouquet findBouquetById(Bouquet bouquet) {
 		return (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
 	}
-	
+	@Override
 	public List<Bouquet> findBouquetByColor(String color) {
 		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.color").setString("color", color).list();
 	}
-	
+	@Override
 	public void updateBouquet(Bouquet bouquet) {
 		sessionFactory.getCurrentSession().merge(bouquet);	
 		
 	}
 	//usuawnie kaskadowe
+	@Override
 	public void deleteBouquet(Bouquet bouquet) {
-		bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
-		
-		// lazy loading here
-		for (User user : bouquet.getUsers()) {
-			user.setId(null);
-			sessionFactory.getCurrentSession().update(user);
-		}
-		sessionFactory.getCurrentSession().delete(bouquet);
-		
+
+	}
+	
+	@Override
+	public List<Bouquet> getAllBouquets() {
+		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.all").list();
 	}
 	
 	
@@ -102,7 +103,7 @@ public class ManagerHibernateImpl implements Manager{
 	public List<Bouquet> getAvailableBouquets(User user) {
 		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.unsold").list();
 	}
-
+	@Override
 	public void disposeBouquet(User user, Bouquet bouquet) {
 
 		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());
@@ -122,7 +123,6 @@ public class ManagerHibernateImpl implements Manager{
 		bouquet.setSold(false);
 	}
 
-
 	public void sellBouqet(Long userId, Long bouquetId) {
 		User user = (User) sessionFactory.getCurrentSession().get(User.class, userId);
 		Bouquet bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquetId);
@@ -131,7 +131,7 @@ public class ManagerHibernateImpl implements Manager{
 	}
 
 
-
+	@Override
 	public List<Bouquet> getOwnedBouquets(User user) {
 		user = (User) sessionFactory.getCurrentSession().get(User.class, user.getId());
 		// lazy loading here - try this code without (shallow) copying
@@ -140,15 +140,12 @@ public class ManagerHibernateImpl implements Manager{
 	}
 
 
-
+	@Override
 	public List<Bouquet> getAvailableBouquets() {
 		
 		return null;
 	}
 
-	public void sellBouquet(Long userId, Long bouquetId) {
-
-	}
 
 
 }

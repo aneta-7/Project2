@@ -42,5 +42,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/spring-tx-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="C:/Users/AnetaS/Downloads/spring-beans-4.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/hsql/hsqldb-2.3.3/hsqldb-2.3.3/hsqldb/lib/hsqldb.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

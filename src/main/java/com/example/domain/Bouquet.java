@@ -1,4 +1,4 @@
-package domain;
+package com.example.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 		@NamedQuery(name = "bouquet.unsold", query = "Select b from Bouquet b where b.sold = false"),
 		@NamedQuery(name = "bouquet.color", query = "Select b from Bouquet b where b.color= :color"),
-		@NamedQuery(name = "bouquet.all", query = "Select b from Bouquet b"),
+		@NamedQuery(name = "bouquet.all", query = "Select b from Bouquet b")
 })
 
 public class Bouquet {
@@ -29,7 +29,6 @@ public class Bouquet {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	public Long getId() {
 		return id;
 	}
