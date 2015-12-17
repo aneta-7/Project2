@@ -43,97 +43,74 @@ public class SellingManagerTest{
 	private final int ID_2 = 2;
 
 	
-	
-	@Before
-	public void before(){
-		User user = new User();
-		user.setName(NAME_1);
-		user.setNick(NICK_1);
-		// ... other properties here
-
-		// Nick jest unikatowy
-		// dodanie nowego uzytkownika
-		manager.addUser(user);
-	}
 	@Test
 	public void addClientCheck() {
 
-		User user = new User();
-		user.setName(NAME_1);
-		user.setNick(NICK_1);
-		// ... other properties here
-
-		// Nick jest unikatowy
-		// dodanie nowego uzytkownika
-		manager.addUser(user);
-		//szukanie po nick'u
-		User retrievedUser = manager.findUserByNick(NICK_1);
-
-		assertEquals(NAME_1, retrievedUser.getName());
-		assertEquals(NICK_1, retrievedUser.getNick());
-		// ... check other properties here
+//		int n = manager.getAllUsers().size();
+//		
+//		User user = new User(ID_1, NAME_1, NICK_1 );
+//		manager.addUser(user);
+//		
+//		User userRetrived = manager.findUserById(user);
+//		assertEquals(user.getId(), userRetrived.getId());
+//		assertEquals(NAME_1, userRetrived.getName());
+//		assertEquals(NICK_1, userRetrived.getNick());
+//
+//		assertEquals(n+1, manager.getAllUsers().size());
+//		
+////		User user = new User();
+////		user.setName(NAME_1);
+////		user.setNick(NICK_1);
+////		user.setBouquets(ID_2);
+////		// ... other properties here
+////
+////		// Nick jest unikatowy
+////		// dodanie nowego uzytkownika
+////		manager.addUser(user);
+////		//szukanie po nick'u
+////		User retrievedUser = manager.findUserByNick(NICK_1);
+////
+////		assertEquals(NAME_1, retrievedUser.getName());
+////		assertEquals(NICK_1, retrievedUser.getNick());
+////		// ... check other properties here
 	}
 
 	@Test
 	public void addBouquetCheck() {
-
-		Bouquet bouquet = new Bouquet();
-		bouquet.setType(TYPE_1);
-		bouquet.setColor(COLOR_1);
-		
-		
-		manager.addNewBouquet(bouquet);
-	
-		List<Bouquet> retrievedBouquet = manager.findBouquetByColor(COLOR_1);
-		assertEquals(TYPE_1, ((Bouquet) retrievedBouquet).getType());
-		assertEquals(COLOR_1, ((Bouquet) retrievedBouquet).getColor());
-		
-		List<Bouquet> bouquets = manager.getAllBouquets();
-		Bouquet bouquetRetrieved = bouquets.get(0);
-		
-		bouquetRetrieved.setColor(COLOR_1);
-		
-		assertEquals(COLOR_1, bouquetRetrieved.getColor());
-		
-		
-//		
-//		//dodawanie
+//
 //		Bouquet bouquet = new Bouquet();
 //		bouquet.setType(TYPE_1);
 //		bouquet.setColor(COLOR_1);
-//		// ... other properties here
-
-
-	//	Long bouquetId = manager.addNewBouquet(bouquet);	
-		//szukanie po id
-	//	Bouquet retrievedBouquet = manager.findBouquetById(bouquetId);
-	//	assertEquals(TYPE_1, retrievedBouquet.getType());
-	//	assertEquals(COLOR_1, retrievedBouquet.getColor());
-		// ... check other properties here	
-	}
-//	@Test
-//	public void sellBouquetCheck() {
-//
-//		User user = new User();
-//		user.setName(NAME_2);
-//		user.setNick(NICK_2);
-//		//dodanie uzytkownika
-//		manager.addUser(user);
-//		//szukanie po nick'u
-//		User retrievedUser = manager.findUserByNick(NICK_2);
 //		
-//		Bouquet bouquet = new Bouquet();
-//		bouquet.setType(TYPE_2);
-//		bouquet.setColor(COLOR_2);
-//		//dodanie nowego bukietu
-//	//	Long bouquetId = manager.addNewBouquet(bouquet);
+//		
+//		manager.addNewBouquet(bouquet);
+//	
+//		List<Bouquet> retrievedBouquet = manager.findBouquetByColor(COLOR_1);
+//		assertEquals(TYPE_1, ((Bouquet) retrievedBouquet).getType());
+//		assertEquals(COLOR_1, ((Bouquet) retrievedBouquet).getColor());
+//		
+//		List<Bouquet> bouquets = manager.getAllBouquets();
+//		Bouquet bouquetRetrieved = bouquets.get(0);
+//		
+//		bouquetRetrieved.setColor(COLOR_1);
+//		
+//		assertEquals(COLOR_1, bouquetRetrieved.getColor());
+//		
+//		
+////		
+////		//dodawanie
+////		Bouquet bouquet = new Bouquet();
+////		bouquet.setType(TYPE_1);
+////		bouquet.setColor(COLOR_1);
+////		// ... other properties here
 //
-//	//	manager.sellBouquet(retrievedUser.getId(), bouquetId);
 //
-////		List<Bouquet> ownedBouquets = manager.getOwnedBouquets(retrievedUser);
-////
-////		assertEquals(1, ownedBouquets.size());
-////		assertEquals(TYPE_2, ownedBouquets.get(0).getType());
-////		assertEquals(COLOR_2, ownedBouquets.get(0).getColor());
-//	}
+//	//	Long bouquetId = manager.addNewBouquet(bouquet);	
+//		//szukanie po id
+//	//	Bouquet retrievedBouquet = manager.findBouquetById(bouquetId);
+//	//	assertEquals(TYPE_1, retrievedBouquet.getType());
+//	//	assertEquals(COLOR_1, retrievedBouquet.getColor());
+//		// ... check other properties here	
+	}
+
 }

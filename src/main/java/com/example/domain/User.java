@@ -30,6 +30,15 @@ public class User {
 
 	private List<Bouquet> bouquets = new ArrayList<Bouquet>();
 
+	public User(String nAME_1, String nICK_1){
+		
+	}
+	public User(String Name, String Nick, int Id) {
+	}
+
+	public User(int iD_1, String nAME_1, String nICK_1) {
+		// TODO Auto-generated constructor stub
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
 	public Long getId() {
@@ -48,7 +57,6 @@ public class User {
 		this.name = name;
 	}
 
-	@Column(unique = true, nullable = false)
 	public String getNick() {
 		return nick;
 	}
