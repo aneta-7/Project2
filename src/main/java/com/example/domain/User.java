@@ -30,14 +30,23 @@ public class User {
 
 	private List<Bouquet> bouquets = new ArrayList<Bouquet>();
 
-	public User(String nAME_1, String nICK_1){
-		
+	public User(String name, String nick){
+		this.name=name;
+		this.nick=nick;
 	}
-	public User(String Name, String Nick, int Id) {
+	public User(String name, String nick, Long id) {
+		this.name=name;
+		this.nick=nick;
+		this.id=id;
 	}
 
-	public User(int iD_1, String nAME_1, String nICK_1) {
-		// TODO Auto-generated constructor stub
+	public User(Long id, String name, String nick) {
+		this.id=id;
+		this.name=name;
+		this.nick=nick;
+	}
+	public User(){
+		
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -70,8 +79,8 @@ public class User {
 		return bouquets;
 	}
 	
-	public void setBouquets(List<Bouquet> bouqets) {
-		this.bouquets = bouqets;
+	public void setBouquets(List<Bouquet> bouquets) {
+		this.bouquets =  bouquets;
 	}
 	
 }

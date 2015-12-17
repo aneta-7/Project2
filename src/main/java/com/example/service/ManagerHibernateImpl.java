@@ -29,11 +29,7 @@ public class ManagerHibernateImpl implements Manager{
 		this.sessionFactory = sessionFactory;
 	}
 	
-	
-	
-	
-	
-	
+
 	@Override
 	public void deleteUser(User user) {
 		sessionFactory.getCurrentSession().delete(user);	
@@ -63,6 +59,8 @@ public class ManagerHibernateImpl implements Manager{
 	}
 	
 	
+	
+	
 	@Override
 	public void addNewBouquet(Bouquet bouquet) {
 		bouquet.setId(null);
@@ -82,50 +80,27 @@ public class ManagerHibernateImpl implements Manager{
 		
 	}
 	//usuawnie kaskadowe
-	@Override
-	public void deleteBouquet(Bouquet bouquet) {
+	public void deleteBouquet(User user, Bouquet bouquet) {
 
+		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());
+		bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
+
+		Bouquet toRemove = null;
+		// lazy loading here (person.getCars)
+		for (Bouquet aBouquet : user.getBouquets())
+			if (aBouquet.getId().compareTo(bouquet.getId()) == 0) {
+				toRemove = aBouquet;
+				break;
+			}
+
+		if (toRemove != null)
+			user.getBouquets().remove(toRemove);
+
+		bouquet.setAvailable(false);
 	}
 	
 	@Override
 	public List<Bouquet> getAllBouquets() {
 		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.all").list();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	@SuppressWarnings("unchecked")
-	public List<Bouquet> getAvailableBouquets(User user) {
-		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.unsold").list();
-	}
-	@Override
-	public void disposeBouquet(User user, Bouquet bouquet) {
-
-	}
-
-	public void sellBouqet(Long userId, Long bouquetId) {
-		
-	}
-
-
-	@Override
-	public List<Bouquet> getOwnedBouquets(User user) {
-	
-		return null;
-	}
-
-
-	@Override
-	public List<Bouquet> getAvailableBouquets() {
-		
-		return null;
-	}
-
-
-
 }

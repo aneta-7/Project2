@@ -16,13 +16,10 @@ public interface Manager {
 	
 	void addNewBouquet(Bouquet bouqet);
 	void updateBouquet(Bouquet bouqet);
-	void deleteBouquet(Bouquet bouqet);
+	void deleteBouquet(User user,Bouquet bouqet);
 	List<Bouquet> getAllBouquets();
-	List<Bouquet> getAvailableBouquets();
-	void disposeBouquet(User user, Bouquet bouqet);
 	Bouquet findBouquetById(Bouquet bouquet);
 	List<Bouquet> findBouquetByColor(String color);
-	List<Bouquet> getOwnedBouquets(User user);
 
 
 }
