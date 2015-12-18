@@ -78,11 +78,9 @@ public class ManagerHibernateImpl implements Manager{
 	}
 	//usuawnie kaskadowe
 	public void deleteBouquet(User user, Bouquet bouquet) {
+		sessionFactory.getCurrentSession().delete(bouquet);
+		user.setBouquets(null);
 
-		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());
-		bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
-		
-		bouquet.setAvailable(false);
 	
 		
 //		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());

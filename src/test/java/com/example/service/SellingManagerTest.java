@@ -116,6 +116,8 @@ public class SellingManagerTest{
 		assertEquals(retrievedUser.getId(), retrievedUser2.getId());
 		assertEquals(NAME_2, retrievedUser2.getName());
 		assertEquals(NICK_2, retrievedUser2.getNick());
+		
+	
 	}
 	
 	@Test
@@ -123,16 +125,16 @@ public class SellingManagerTest{
 
 		int n = manager.getAllBouquets().size();
 		
-		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);
-		bouquet.setAvailable(available_1);
+
 
 		manager.addNewBouquet(bouquet);
 	
 		Bouquet retrievedBouquet = manager.findBouquetById(bouquet);
-		assertEquals(TYPE_1, ((Bouquet) retrievedBouquet).getType());
-		assertEquals(COLOR_1, ((Bouquet) retrievedBouquet).getColor());
+		assertEquals(TYPE_1, retrievedBouquet.getType());
+		assertEquals(COLOR_1, retrievedBouquet.getColor());
 				
 		assertEquals(n+1, manager.getAllBouquets().size());
 	}
@@ -140,11 +142,9 @@ public class SellingManagerTest{
 	@Test 
 	public void deleteBouquetCheck(){
 		User user = new User(NAME_1,NICK_1, ID_1);
-		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
 		bouquet.setType(TYPE_1);
-		bouquet.setColor(COLOR_1);
-		bouquet.setAvailable(available_1);
-		
+		bouquet.setColor(COLOR_1);		
 
 		manager.addNewBouquet(bouquet);;
 		int n = manager.getAllBouquets().size();
@@ -155,16 +155,15 @@ public class SellingManagerTest{
 		assertEquals(COLOR_1, retrievedBouquet.getColor());
 
 		manager.deleteBouquet(user, bouquet);
-		assertEquals(n, manager.getAllBouquets().size());
-		assertEquals(available_2, manager.getAvailable(retrievedBouquet));
+		assertEquals(n-1, manager.getAllBouquets().size());
+		assertEquals(null,user.getBouquets());
 	}
 	
 	@Test 
 	public void updateBouquetCheck(){
-		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);
-		bouquet.setAvailable(available_1);
 
 		manager.addNewBouquet(bouquet);
 		
@@ -182,6 +181,19 @@ public class SellingManagerTest{
 		assertEquals(TYPE_2, retrievedUser2.getType());
 		assertEquals(COLOR_2, retrievedUser2.getColor());
 	}
-
-
+	
+	@Test
+	public void addBouquetToUserCheck(){
+		
+	}
+	
+	@Test 
+	public void findBouqetByColorChceck(){
+		
+	}
+	@Test
+	//find X in Y
+	public void find(){
+		
+	}
 }

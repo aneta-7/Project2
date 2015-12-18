@@ -22,7 +22,7 @@ public class Bouquet {
 	private Long id;
 	private String type;
 	private String color;
-	private Boolean available;
+
 
 	public Bouquet(){
 		
@@ -31,11 +31,7 @@ public class Bouquet {
 		this.type=type;
 		this.color=color;
 	}
-	public Bouquet(String type, String color, boolean available) {
-		this.type=type;
-		this.color=color;
-		this.available=available;
-	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
@@ -55,12 +51,6 @@ public class Bouquet {
 	}
 	public void setColor(String color) {
 		this.color = color;
-	}
-	public boolean getAvailable() {
-		return available;
-	}
-	public void setAvailable(boolean available) {
-		this.available = available;
 	}
 	
 }
