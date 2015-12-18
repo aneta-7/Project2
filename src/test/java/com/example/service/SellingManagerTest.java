@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,22 @@ public class SellingManagerTest{
 	
 	private final long ID_1 = 1;
 	private final long ID_2 = 2;
+	
+	
+	
 	private SessionFactory sessionFactory;
 	private Session session = null;
 
+	
+	@After
+	public void after(){
+		
+	}
+	@Before
+	public void before(){
+		
+	}
+	
 	@Test
 	public void addClientCheck() {
 
@@ -135,7 +149,7 @@ public class SellingManagerTest{
 		assertEquals(COLOR_1, retrievedUser.getColor());
 
 		manager.deleteBouquet(user, bouquet);
-		assertEquals(n-1, manager.getAllBouquets().size());
+		assertEquals(n, manager.getAllBouquets().size());
 	}
 	
 	@Test 
@@ -157,7 +171,7 @@ public class SellingManagerTest{
 		
 		Bouquet retrievedUser2 = manager.findBouquetById(retrievedUser);
 		assertEquals(retrievedUser.getId(), retrievedUser2.getId());
-		assertEquals(TYPE_1, retrievedUser2.getType());
+		assertEquals(TYPE_2, retrievedUser2.getType());
 		assertEquals(COLOR_2, retrievedUser2.getColor());
 	}
 

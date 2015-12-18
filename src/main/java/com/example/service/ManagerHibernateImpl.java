@@ -35,7 +35,6 @@ public class ManagerHibernateImpl implements Manager{
 		sessionFactory.getCurrentSession().delete(user);	
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllUsers() {
 		return sessionFactory.getCurrentSession().getNamedQuery("user.all").list();
@@ -84,19 +83,25 @@ public class ManagerHibernateImpl implements Manager{
 
 		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());
 		bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
-
-		Bouquet toRemove = null;
-		// lazy loading here (person.getCars)
-		for (Bouquet aBouquet : user.getBouquets())
-			if (aBouquet.getId().compareTo(bouquet.getId()) == 0) {
-				toRemove = aBouquet;
-				break;
-			}
-
-		if (toRemove != null)
-			user.getBouquets().remove(toRemove);
-
+		
 		bouquet.setAvailable(false);
+	
+		
+//		user = (User) sessionFactory.getCurrentSession().get(User.class,user.getId());
+//		bouquet = (Bouquet) sessionFactory.getCurrentSession().get(Bouquet.class, bouquet.getId());
+//
+//		Bouquet toRemove = null;
+//		// lazy loading here (person.getCars)
+//		for (Bouquet aBouquet : user.getBouquets())
+//			if (aBouquet.getId().compareTo(bouquet.getId()) == 0) {
+//				toRemove = aBouquet;
+//				break;
+//			}
+//
+//		if (toRemove != null)
+//			user.getBouquets().remove(toRemove);
+//
+//		bouquet.setAvailable(false);
 	}
 	
 	@Override

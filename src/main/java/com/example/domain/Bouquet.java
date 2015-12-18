@@ -22,7 +22,7 @@ public class Bouquet {
 	private Long id;
 	private String type;
 	private String color;
-	private Boolean available;
+	private Boolean available = true;
 
 	public Bouquet(){
 		
