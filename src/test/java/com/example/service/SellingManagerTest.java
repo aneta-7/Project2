@@ -2,6 +2,9 @@ package com.example.service;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.Menu;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -141,7 +144,7 @@ public class SellingManagerTest{
 	
 	@Test 
 	public void deleteBouquetCheck(){
-		User user = new User(NAME_1,NICK_1, ID_1);
+		User user = new User(NAME_1,NICK_1);
 		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);		
@@ -182,18 +185,93 @@ public class SellingManagerTest{
 		assertEquals(COLOR_2, retrievedUser2.getColor());
 	}
 	
-	@Test
-	public void addBouquetToUserCheck(){
-		
-	}
-	
 	@Test 
 	public void findBouqetByColorChceck(){
+		List<Bouquet> bouquetColor = manager.findBouquetByColor(COLOR_1);
+		int n = bouquetColor.size();
+		
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
+		bouquet.setType(TYPE_1);
+		bouquet.setColor(COLOR_1);
+
+
+		manager.addNewBouquet(bouquet);
+	
+		Bouquet retrievedBouquet = manager.findBouquetById(bouquet);
+		assertEquals(TYPE_1, retrievedBouquet.getType());
+		assertEquals(COLOR_1, retrievedBouquet.getColor());
+
+		
+		Bouquet bouquet2 = new Bouquet(TYPE_2, COLOR_1);
+		bouquet2.setType(TYPE_2);
+		bouquet2.setColor(COLOR_1);
+
+		manager.addNewBouquet(bouquet2);
+		
+		Bouquet retrievedBouquet2 = manager.findBouquetById(bouquet2);
+		assertEquals(TYPE_2, retrievedBouquet2.getType());
+		assertEquals(COLOR_1, retrievedBouquet2.getColor());
+		
+		List<Bouquet> color = manager.findBouquetByColor(COLOR_1);
+		
+		for(Bouquet aBouquet : color){
+			Bouquet bouquet3 = manager.findBouquetById(aBouquet);
+			assertEquals(aBouquet.getId(), bouquet3.getId());
+			assertEquals(aBouquet.getType(), bouquet3.getType());
+			assertEquals(aBouquet.getColor(), bouquet3.getColor());
+		}
+
+		assertEquals(n+2, color.size());
 		
 	}
 	@Test
-	//find X in Y
-	public void find(){
+	//szukanie uzytkownikow o zadanym id bukietu
+	public void findCheck(){
+
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
+		bouquet.setType(TYPE_2);
+		bouquet.setColor(COLOR_1);
+
+		manager.addNewBouquet(bouquet);
 		
+		Bouquet retrievedBouquet = manager.findBouquetById(bouquet);
+		assertEquals(TYPE_2, retrievedBouquet.getType());
+		assertEquals(COLOR_1, retrievedBouquet.getColor());
+		
+		Bouquet bouquet2 = new Bouquet(TYPE_2, COLOR_1);
+		bouquet2.setType(TYPE_2);
+		bouquet2.setColor(COLOR_1);
+
+		manager.addNewBouquet(bouquet2);
+		
+		Bouquet retrievedBouquet2 = manager.findBouquetById(bouquet2);
+		assertEquals(TYPE_2, retrievedBouquet2.getType());
+		assertEquals(COLOR_1, retrievedBouquet2.getColor());
+		
+		User user = new User(NAME_1, NICK_1);
+		user.setName(NAME_1);
+		user.setNick(NICK_1);
+
+		manager.addUser(user);
+		
+		User retrievedUser = manager.findUserById(user);
+		assertEquals(user.getId(), retrievedUser.getId());
+		assertEquals(NAME_1, retrievedUser.getName());
+		assertEquals(NICK_1, retrievedUser.getNick());
+		
+		List<Bouquet> userInBouquet = manager.findUserByBouquet(retrievedUser);
+		int n = userInBouquet.size();
+		
+		manager.addBouquetToUser(retrievedBouquet, retrievedUser);
+		manager.addBouquetToUser(retrievedBouquet2, retrievedUser);
+		
+		assertEquals(n+2, userInBouquet.size());
+		
+		for(Bouquet aBouquet : userInBouquet){
+			Bouquet bouquet3 = manager.findBouquetById(aBouquet);
+			assertEquals(aBouquet.getId(), bouquet3.getId());
+			assertEquals(aBouquet.getType(), bouquet3.getType());
+			assertEquals(aBouquet.getColor(), bouquet3.getColor());
+		}
 	}
 }

@@ -27,17 +27,16 @@ public class User {
 	private Long id;
 	private String name;
 	private String nick;
-
 	private List<Bouquet> bouquets = new ArrayList<Bouquet>();
 
 	public User(String name, String nick){
 		this.name=name;
 		this.nick=nick;
 	}
-	public User(String name, String nick, Long id) {
+	public User(String name, String nick, List<Bouquet> bouquet_id) {
 		this.name=name;
 		this.nick=nick;
-		this.id=id;
+		this.bouquets=bouquet_id;
 	}
 
 	public User(Long id, String name, String nick) {

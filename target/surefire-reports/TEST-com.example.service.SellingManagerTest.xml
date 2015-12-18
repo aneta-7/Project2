@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.example.service.SellingManagerTest" time="6.45" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="com.example.service.SellingManagerTest" time="8.253" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_60\jre\bin"/>
@@ -28,7 +28,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\AnetaS\Documents\GitHub\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8226547224223332246.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\AnetaS\Documents\GitHub\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4784070242047999087.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_60\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jdk1.8.0_60/jre/bin/server;C:/Program Files/Java/jdk1.8.0_60/jre/bin;C:/Program Files/Java/jdk1.8.0_60/jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jdk1.8.0_60\bin;C:\apache-maven-3.3.3\bin;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Ruby22-x64\bin;C:\Users\AnetaS\AppData\Local\atom\bin;C:\Users\AnetaS\Desktop;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -63,10 +63,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.example.service.SellingManagerTest" name="addBouquetCheck" time="6.278"/>
-  <testcase classname="com.example.service.SellingManagerTest" name="addClientCheck" time="0.057"/>
-  <testcase classname="com.example.service.SellingManagerTest" name="deleteClientCheck" time="0.047"/>
-  <testcase classname="com.example.service.SellingManagerTest" name="updateClientCheck" time="0.019"/>
-  <testcase classname="com.example.service.SellingManagerTest" name="deleteBouquetCheck" time="0.034"/>
-  <testcase classname="com.example.service.SellingManagerTest" name="updateBouquetCheck" time="0.015"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="addClientCheck" time="7.971"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="deleteClientCheck" time="0.044"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="findBouqetByColorChceck" time="0.051"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="updateClientCheck" time="0.034"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="deleteBouquetCheck" time="0.041"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="updateBouquetCheck" time="0.02"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="addBouquetCheck" time="0.042"/>
+  <testcase classname="com.example.service.SellingManagerTest" name="findCheck" time="0.05"/>
 </testsuite>

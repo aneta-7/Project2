@@ -13,6 +13,7 @@ public interface Manager {
 	void updateUser(User user);
 	User findUserById(User user);
 	User findUserByNick(String nick);
+	List<Bouquet> findUserByBouquet(User user);
 	
 	void addNewBouquet(Bouquet bouqet);
 	void updateBouquet(Bouquet bouqet);
@@ -20,7 +21,5 @@ public interface Manager {
 	List<Bouquet> getAllBouquets();
 	Bouquet findBouquetById(Bouquet bouquet);
 	List<Bouquet> findBouquetByColor(String color);
-	boolean getAvailable(Bouquet bouquet);
-
-
+	void addBouquetToUser(Bouquet bouquet, User user);
 }
