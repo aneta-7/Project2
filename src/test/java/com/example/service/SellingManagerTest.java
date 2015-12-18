@@ -38,6 +38,9 @@ public class SellingManagerTest{
 	
 	private final String TYPE_2 = "bukiet";
 	private final String COLOR_2 = "bialy";
+	 
+	private final boolean available_1= true;
+	private final boolean available_2 = false;
 	
 	private final long ID_1 = 1;
 	private final long ID_2 = 2;
@@ -120,9 +123,10 @@ public class SellingManagerTest{
 
 		int n = manager.getAllBouquets().size();
 		
-		Bouquet bouquet = new Bouquet(TYPE_1,COLOR_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);
+		bouquet.setAvailable(available_1);
 
 		manager.addNewBouquet(bouquet);
 	
@@ -136,27 +140,31 @@ public class SellingManagerTest{
 	@Test 
 	public void deleteBouquetCheck(){
 		User user = new User(NAME_1,NICK_1, ID_1);
-		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);
+		bouquet.setAvailable(available_1);
+		
 
 		manager.addNewBouquet(bouquet);;
 		int n = manager.getAllBouquets().size();
 
-		Bouquet retrievedUser = manager.findBouquetById(bouquet);
-		assertEquals(bouquet.getId(), retrievedUser.getId());
-		assertEquals(TYPE_1, retrievedUser.getType());
-		assertEquals(COLOR_1, retrievedUser.getColor());
+		Bouquet retrievedBouquet = manager.findBouquetById(bouquet);
+		assertEquals(bouquet.getId(), retrievedBouquet.getId());
+		assertEquals(TYPE_1, retrievedBouquet.getType());
+		assertEquals(COLOR_1, retrievedBouquet.getColor());
 
 		manager.deleteBouquet(user, bouquet);
 		assertEquals(n, manager.getAllBouquets().size());
+		assertEquals(available_2, manager.getAvailable(retrievedBouquet));
 	}
 	
 	@Test 
 	public void updateBouquetCheck(){
-		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1);
+		Bouquet bouquet = new Bouquet(TYPE_1, COLOR_1, available_1);
 		bouquet.setType(TYPE_1);
 		bouquet.setColor(COLOR_1);
+		bouquet.setAvailable(available_1);
 
 		manager.addNewBouquet(bouquet);
 		

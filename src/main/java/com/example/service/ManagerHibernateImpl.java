@@ -49,7 +49,6 @@ public class ManagerHibernateImpl implements Manager{
 	}
 	@Override
 	public void addUser(User user) {
-		user.setId(null);
 		sessionFactory.getCurrentSession().persist(user);
 	}
 	@Override
@@ -62,7 +61,6 @@ public class ManagerHibernateImpl implements Manager{
 	
 	@Override
 	public void addNewBouquet(Bouquet bouquet) {
-		bouquet.setId(null);
 		sessionFactory.getCurrentSession().persist(bouquet);	
 	}
 	@Override
@@ -107,5 +105,11 @@ public class ManagerHibernateImpl implements Manager{
 	@Override
 	public List<Bouquet> getAllBouquets() {
 		return sessionFactory.getCurrentSession().getNamedQuery("bouquet.all").list();
+	}
+
+	@Override
+	public boolean getAvailable(Bouquet bouquet) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

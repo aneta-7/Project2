@@ -20,6 +20,7 @@ public interface Manager {
 	List<Bouquet> getAllBouquets();
 	Bouquet findBouquetById(Bouquet bouquet);
 	List<Bouquet> findBouquetByColor(String color);
+	boolean getAvailable(Bouquet bouquet);
 
 
 }
