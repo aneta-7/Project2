@@ -53,16 +53,6 @@ public class SellingManagerTest{
 	private SessionFactory sessionFactory;
 	private Session session = null;
 
-	
-	@After
-	public void after(){
-		
-	}
-	@Before
-	public void before(){
-		
-	}
-	
 	@Test
 	public void addClientCheck() {
 
@@ -82,20 +72,23 @@ public class SellingManagerTest{
 	
 	@Test
 	public void deleteClientCheck(){
-		User user = new User(NAME_1, NICK_1);
+	
+		int n = manager.getAllUsers().size();
+
+		User user = new User( NAME_1, NICK_1);
 		user.setName(NAME_1);
 		user.setNick(NICK_1);
 
 		manager.addUser(user);
-		int n = manager.getAllUsers().size();
-
+		
 		User retrievedUser = manager.findUserById(user);
 		assertEquals(user.getId(), retrievedUser.getId());
 		assertEquals(NAME_1, retrievedUser.getName());
 		assertEquals(NICK_1, retrievedUser.getNick());
 
+		assertEquals(n+1, manager.getAllUsers().size());
 		manager.deleteUser(user);
-		assertEquals(n-1, manager.getAllUsers().size());
+		assertEquals(n, manager.getAllUsers().size());
 	}
 	
 	@Test 
