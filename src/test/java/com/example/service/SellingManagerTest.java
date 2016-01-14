@@ -3,6 +3,7 @@ package com.example.service;
 import static org.junit.Assert.assertEquals;
 
 import java.awt.Menu;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -52,7 +53,60 @@ public class SellingManagerTest{
 	
 	private SessionFactory sessionFactory;
 	private Session session = null;
+	
+	private List<Long>  addedUsers = new ArrayList<Long>();
+	private List<Long>  addedBouquet = new ArrayList<Long>();
+	
+	@Before
+    public void sprawdzDodaneElementy() {
 
+        List<User> users = manager.getAllUsers();
+        List<Bouquet> bouquets = manager.getAllBouquets();
+
+        for(User user : users)
+            addedUsers.add(user.getId());
+
+        for(Bouquet bouquet : bouquets)
+            addedBouquet.add(bouquet.getId());
+    }
+
+    @After
+    public void usunTestowaneDane() {
+
+        List<User> users = manager.getAllUsers();
+        List<Bouquet> bouquets = manager.getAllBouquets();
+
+        boolean delete;
+        for(Bouquet bouquet : bouquets) {
+            delete = true;
+            for (Long bouquet2 : addedBouquet)
+                if (bouquet.getId() == bouquet2)
+                    {
+                        delete = false;
+                        break;
+                    }
+            User user = new User(NAME_1,NICK_1);;
+			if(delete)
+                manager.deleteBouquet(user, bouquet);
+            	}
+
+        for(User user : users) {
+            delete = true;
+            for (Long user2 : addedUsers)
+                if (user.getId() == user2) {
+                delete = false;
+                break;
+                }
+            if(delete)
+                manager.deleteUser(user);
+        }
+        
+    }
+	
+	
+	
+	
+	
 	@Test
 	public void addClientCheck() {
 
